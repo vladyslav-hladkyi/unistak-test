@@ -11,6 +11,9 @@
 		<members>ContentDocumentTriggerHandlerTest</members>
 		<members>ContentVersionTriggerHanddler</members>
 		<members>ContentVersionTriggerHandlerTest</members>
+		<members>TestDataFactory</members>
+		<members>TriggerHandler</members>
+		<members>TriggerHandlerTest</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
