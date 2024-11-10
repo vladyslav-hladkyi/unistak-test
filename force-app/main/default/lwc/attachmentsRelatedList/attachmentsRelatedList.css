@@ -1,0 +1,17 @@
+.clickable-text {
+    color: #1c66af;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clickable-text:hover {
+    text-decoration: underline;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 10px;
+    max-width: 100%;
+    width: 100%;
+}

@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+        <template lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:file" size="small"></lightning-icon>
+            <span class="slds-var-p-left_small">Notes &amp; Attachments</span>
+        </h3>
+        <div slot="actions">
+            <lightning-button-icon icon-name="utility:refresh"  title="Refresh" onclick={handleRefreshComponent}></lightning-button-icon>
+        </div>
+        <div>
+            <template lwc:if={areFilesPresent}>
+                <lightning-datatable
+                    key-field="fileId"
+                    data={files}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    show-row-number-column
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+            <template lwc:else>
+                <div class="slds-align_absolute-center"> No records to display</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

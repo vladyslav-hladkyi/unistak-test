@@ -1,0 +1,27 @@
+<template>
+    <lightning-modal-header label="Upload Files"></lightning-modal-header>
+    <lightning-modal-body>
+        <div>
+            <lightning-combobox
+                name="type"
+                label="Type"
+                value={selectedType}
+                placeholder="Select Type"
+                options={options}
+                onchange={handleTypeChange}
+                >
+            </lightning-combobox>
+            <lightning-file-upload
+                disabled={isDisabled}
+                label="Upload Files"
+                record-id={content.recordId}
+                onuploadfinished={handleUploadFinished}
+                multiple
+                >
+            </lightning-file-upload>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <!-- <lightning-button label="OK" onclick={handleClose}></lightning-button> -->
+    </lightning-modal-footer>
+</template>

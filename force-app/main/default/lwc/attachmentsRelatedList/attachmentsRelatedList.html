@@ -1,0 +1,48 @@
+<template>
+    <div class="slds-panel slds-border_top slds-border_left slds-border_bottom slds-border_right">
+        <lightning-card>
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+            <h3 slot="title" class="slds-var-p-top_small slds-var-p-horizontal_small">
+                <lightning-icon icon-name="standard:file" size="small"></lightning-icon>
+                <span class="slds-var-p-left_small">Notes &amp; Attachments {formattedCountOfAttachments}</span>
+            </h3>
+            <div slot="actions" class="slds-var-p-top_small slds-var-p-horizontal_small">
+                <lightning-button-group>
+                    <lightning-button label="Upload Files" onclick={handleUploadFile}></lightning-button>
+                    <lightning-button-icon icon-name="utility:refresh"  title="Refresh" onclick={handleRefreshComponent}></lightning-button-icon>
+                </lightning-button-group>
+            </div>
+            <div class="slds-var-p-horizontal_small slds-var-p-top_small slds-border_top">
+                <template lwc:if={areFilesPresent}>
+                    <div class="grid-container">
+                        <template for:each={firstSixFiles} for:item="file">
+                            <div key={file.linkId} class="grid-item">
+                                <div class="slds-media slds-media_center slds-m-bottom_small">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon
+                                            icon-name={file.iconName}
+                                            alternative-text={file.title}
+                                            size="medium">
+                                        </lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <span class="clickable-text slds-truncate" data-id={file.fileId} onclick={handlePreviewFile}>{file.title}</span>
+                                        <p class="slds-text-body_small slds-text-color_weak">{file.information}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="slds-align_absolute-center"> No records to display</div>
+                </template>
+            </div>
+            <div slot="footer">
+                <span class="clickable-text" onclick={handleOpenViewAll}>View All</span>
+            </div>
+        </lightning-card>
+    </div>
+</template>
